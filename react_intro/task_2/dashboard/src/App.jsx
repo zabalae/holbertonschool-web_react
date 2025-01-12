@@ -15,6 +15,9 @@ function App() {
       </header>
       <div className="App-body">
         <p>Login to access the full dashboard</p>
+        <label for="email">Email: </label><input id="email" type="email"/>
+        <label for="password">Password: </label><input id="password" type="password"/>
+        <button id="buttom_ok">OK</button>
       </div>
       <footer className="App-footer">
       <p>Copyright {getCurrentYear()} {getFooterCopy(true)}</p>
