@@ -17,7 +17,7 @@ function App() {
         <p>Login to access the full dashboard</p>
       </div>
       <footer className="App-footer">
-        <p>{getFooterCopy(true)} - Copyright {getCurrentYear()} - Holberton School</p>
+      <p>Copyright {getCurrentYear()} {getFooterCopy(true)}</p>
       </footer>
     </div>
   );
