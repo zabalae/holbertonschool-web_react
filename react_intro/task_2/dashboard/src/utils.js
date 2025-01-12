@@ -9,3 +9,7 @@ function getFooterCopy(isIndex) {
 
 // export
 export { getFullYear, getFooterCopy };
+
+// getLatestNotification It accepts one argument isIndex(boolean). 
+export const getLatestNotification = () => 
+  '<strong>Urgent requirement</strong> - complete by EOD';
