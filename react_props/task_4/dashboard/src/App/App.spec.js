@@ -1,45 +1,48 @@
-import { render, screen } from '@testing-library/react';
+import { shallow } from 'enzyme';
 import App from './App';
+import React from 'react';
+import CourseList from '../CourseList/CourseList';
 
-describe('App component', () => {
-    beforeEach(() => {
-        document.body.innerHTML = '';  // Clear the body to ensure no leftover markup from previous tests
-        render(<App />);
-    });
+describe('Basic React Tests - <App />', function() {
+	it('Should render without crashing', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.exists()).toBeTruthy();
+	});
 
-    test('renders the h1 element with the text "School Dashboard"', () => {
-        const headingElement = screen.getByRole('heading', { name: /school dashboard/i });
-        expect(headingElement).toBeInTheDocument();
-    });
+	it('Should contain the Notifications component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Notifications')).toHaveLength(1);
+	});
 
-    test('checks text content in app-body and app-footer', () => {
-        const bodyText = screen.getByText(/login to access the full dashboard/i);
-        expect(bodyText).toBeInTheDocument();
+	it('Should contain the Header component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Header')).toHaveLength(1);
+	});
 
-        // Simplified check for the footer text, focusing on part of the text
-        const footerText = screen.getByText(/copyright/i);
-        expect(footerText).toBeInTheDocument();
-    });
+	it('Should contain the Login component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Login')).toHaveLength(1);
+	});
 
-    test('checks if an img element with alt text "holberton logo" is rendered', () => {
-        const imgElement = screen.getByAltText(/holberton logo/i);
-        expect(imgElement).toBeInTheDocument();
-    });
+	it('Should contain the Footer component', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('Footer')).toHaveLength(1);
+	});
 
-    test('renders two input elements', () => {
-        const inputElements = screen.getAllByTestId('input-element');
-        expect(inputElements.length).toBe(2);
-    });
+	it('Should check that CourseList is not displayed', () => {
+		const wrapper = shallow(<App />);
+		expect(wrapper.find('CourseList')).toHaveLength(0);
+	});
+});
 
-    test('renders two label elements with the text "Email" and "Password"', () => {
-        const emailLabel = screen.getByLabelText(/email/i);
-        const passwordLabel = screen.getByLabelText(/password/i);
-        expect(emailLabel).toBeInTheDocument();
-        expect(passwordLabel).toBeInTheDocument();
-    });
+describe('Basic React Tests - When isLoggedIn is true,', function() {
+	it('Should verify that the Login component is not included', () => {
+		const wrapper = shallow(<App isLoggedIn={true} />);
+		expect(wrapper.find('Login')).toHaveLength(0);
+	});
 
-    test('renders a button with the text "OK"', () => {
-        const buttonElement = screen.getByRole('button', { name: /ok/i });
-        expect(buttonElement).toBeInTheDocument();
-    });
+	it('Should verify that the CourseList component is included', () => {
+		const wrapper = shallow(<App isLoggedIn={true} />);
+		expect(wrapper.find('CourseList')).toHaveLength(1);
+	});
 });
