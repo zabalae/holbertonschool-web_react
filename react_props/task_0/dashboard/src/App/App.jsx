@@ -1,28 +1,25 @@
-import React from 'react';
-import './App.css'; // Make sure the path is correct
-import logo from './assets/holberton-logo.jpg'; // Adjust the path as needed
-import { getCurrentYear, getFooterCopy } from '../utils/utils';
+import  React from 'react';
+import './App.css';
 import Notifications from '../Notifications/Notifications';
+import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 
 function App() {
   return (
-    <div className="App">
+    <React.Fragment>
       <Notifications />
-      <header className="App-header">
-        <img src={logo} alt="Holberton logo" />
-        <h1>School dashboard</h1>
-      </header>
-      <div className="App-body">
-        <p>Login to access the full dashboard</p>
-        <label for="email">Email: </label><input id="email" type="email"/>
-        <label for="password">Password: </label><input id="password" type="password"/>
-        <button id="buttom_ok">OK</button>
+      <div className="App">
+        <Header />
       </div>
-      <footer className="App-footer">
-      <p>Copyright {getCurrentYear()} {getFooterCopy(true)}</p>
-      </footer>
-    </div>
+      <div className="App-body">
+        <Login />
+      </div>
+      <div className="App-footer">
+        <Footer />
+      </div>
+    </React.Fragment>
   );
 }
 
