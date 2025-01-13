@@ -2,6 +2,7 @@ import React from 'react';
 import './Notifications.css';
 import closeIcon from './close-icon.png'
 import { getLatestNotification } from '../utils/utils';
+import NotificationItem from "./NotificationItem";
 
 //The function should return a div with the class Notifications
 //The div should contain a paragraph with the text Here is the list of notifications
@@ -16,9 +17,9 @@ export const Notifications = () => {
           <img src={closeIcon} alt="close-icon" width='10px'/>
         </button>
         <ul>
-          <li data-priority='default'>New course available</li>
-          <li data-priority='urgent'>New resume available</li>
-          <li data-priority='urgent'  dangerouslySetInnerHTML={{ __html: getLatestNotification() }}></li>
+          <NotificationItem data-priority='default' value="New course available" />
+          <NotificationItem data-priority='urgent' value="New resume available" />
+          <NotificationItem data-priority='urgent'  dangerouslySetInnerHTML={{ __html: getLatestNotification() }} />
         </ul>
       </div>
     );
