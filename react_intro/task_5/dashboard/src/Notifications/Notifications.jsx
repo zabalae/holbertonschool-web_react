@@ -1,7 +1,7 @@
 import React from 'react';
 import './Notifications.css';
 import closeIcon from './close-icon.png'
-import { getLatestNotification } from './utils';
+import { getLatestNotification } from '../utils/utils';
 
 //The function should return a div with the class Notifications
 //The div should contain a paragraph with the text Here is the list of notifications
